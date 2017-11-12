@@ -235,6 +235,8 @@ bool HelloWorld::init()
     // 点击事件结束处理
     listener1->onTouchEnded = [=](Touch* touch, Event* event){
         log("-------");
+        log("-------");
+        log("-------");
     };
     
     // 添加监听器
@@ -242,11 +244,9 @@ bool HelloWorld::init()
     //    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1->clone(), sprite2);
     //    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1->clone(), sprite3);
     
-    //    scheduleUpdate();
-
     
     
-    
+    scheduleUpdate();
     return true;
 }
 
