@@ -217,6 +217,7 @@ bool HelloWorld::init()
         if (rect.containsPoint(locationInNode))
         {
             log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
+            log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
             //            target->setOpacity(180);
             
             auto visibleSize = Director::getInstance()->getVisibleSize();
