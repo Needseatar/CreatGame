@@ -94,10 +94,10 @@ bool HelloWorld::init()
     
     
     /*层*/
-    //    auto layer22 = LayerColor::create(Color4B(0, 128, 128, 255));
-    //    layer22->setContentSize(CCSizeMake(120, 80));
-    //    layer22->setPosition(Point(50, 50));
-    //    this->addChild(layer22);
+        auto layer22 = LayerColor::create(Color4B(0, 128, 128, 255));
+        layer22->setContentSize(CCSizeMake(120, 80));
+        layer22->setPosition(Point(50, 50));
+        this->addChild(layer22);
     //
     //    auto sprite1 = Sprite::createWithTexture(TextureCache::getInstance()->addImage("HelloWorld.png"));
     //    this->addChild(sprite1, 0);
