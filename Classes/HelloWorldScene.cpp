@@ -223,6 +223,11 @@ bool HelloWorld::init()
             auto visibleSize = Director::getInstance()->getVisibleSize();
             auto jump = JumpTo::create(6, Point(visibleSize.width/2.0, visibleSize.height/2.0), 40, 10);
             target->runAction(jump);
+            
+            // create a scene. it's an autorelease object
+            auto scene = HelloWorld::createScene();
+            auto transitions = TransitionMoveInL::create(0.2f, scene);
+            Director::getInstance()->replaceScene(transitions);
             return true;
         }
         return false;
