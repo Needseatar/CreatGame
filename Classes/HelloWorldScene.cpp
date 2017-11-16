@@ -226,7 +226,7 @@ bool HelloWorld::init()
             
             // create a scene. it's an autorelease object
             auto scene = HelloWorld::createScene();
-            auto transitions = TransitionMoveInL::create(0.2f, scene);
+            auto transitions = TransitionMoveInL::create(5.5f, scene);
             Director::getInstance()->replaceScene(transitions);
             return true;
         }
