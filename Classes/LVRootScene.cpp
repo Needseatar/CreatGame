@@ -1,12 +1,19 @@
-#include "HelloWorldScene.h"
+//
+//  LVRootScene.cpp
+//  CreatGame
+//
+//  Created by LV on 2017/11/16.
+//
+//
+
 #include "SimpleAudioEngine.h"
 #include "LVRootScene.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* LVRootScene::createScene()
 {
-    return HelloWorld::create();
+    return LVRootScene::create();
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -17,7 +24,7 @@ static void problemLoading(const char* filename)
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool LVRootScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -25,20 +32,20 @@ bool HelloWorld::init()
     {
         return false;
     }
-
+    
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
+    
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
-
+    
     // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-
+                                           CC_CALLBACK_1(LVRootScene::menuCloseCallback, this));
+    
     if (closeItem == nullptr ||
         closeItem->getContentSize().width <= 0 ||
         closeItem->getContentSize().height <= 0)
@@ -51,18 +58,18 @@ bool HelloWorld::init()
         float y = origin.y + closeItem->getContentSize().height/2;
         closeItem->setPosition(Vec2(x,y));
     }
-
+    
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
-
+    
     /////////////////////////////
     // 3. add your codes below...
-
+    
     // add a label shows "Hello World"
     // create and initialize a label
-
+    
     auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     if (label == nullptr)
     {
@@ -73,11 +80,11 @@ bool HelloWorld::init()
         // position the label on the center of the screen
         label->setPosition(Vec2(origin.x + visibleSize.width/2,
                                 origin.y + visibleSize.height - label->getContentSize().height));
-
+        
         // add the label as a child to this layer
         this->addChild(label, 1);
     }
-
+    
     // add "HelloWorld" splash screen"
     auto sprite = Sprite::create("HelloWorld.png");
     if (sprite == nullptr)
@@ -88,17 +95,17 @@ bool HelloWorld::init()
     {
         // position the sprite on the center of the screen
         sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
+        
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
     
     
     /*层*/
-        auto layer22 = LayerColor::create(Color4B(0, 128, 128, 255));
-        layer22->setContentSize(CCSizeMake(120, 80));
-        layer22->setPosition(Point(50, 50));
-        this->addChild(layer22);
+    auto layer22 = LayerColor::create(Color4B(0, 128, 128, 255));
+    layer22->setContentSize(CCSizeMake(120, 80));
+    layer22->setPosition(Point(50, 50));
+    this->addChild(layer22);
     //
     //    auto sprite1 = Sprite::createWithTexture(TextureCache::getInstance()->addImage("HelloWorld.png"));
     //    this->addChild(sprite1, 0);
@@ -180,10 +187,12 @@ bool HelloWorld::init()
     
     auto rotate = RotateTo::create(5.0, 460);
     
+    auto rotate1 = RotateTo::create(5.0, 460);
+    
     //使一批动作同时执行
     auto allAction =  Spawn::create(ScaleTo::create(5.8, 3), JumpTo::create(5.8, Point(0, visibleSize.height/2.0), 40, 10), NULL);
     
-    auto action = Sequence::create(allAction, rotate, scale, bezierAction, jump, blink, moveTo, moveTo1, hideAction, actionMoveDone, NULL);
+    auto action = Sequence::create(allAction, rotate, scale, bezierAction, jump, blink, moveTo, moveTo1, hideAction, rotate1, actionMoveDone, NULL);
     green->runAction(action);
     
     /*序列帧动画*/
@@ -329,26 +338,26 @@ bool HelloWorld::init()
     return true;
 }
 
-void HelloWorld::update(float dt)
+void LVRootScene::update(float dt)
 {
     log("update");
 }
 
 
 
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void LVRootScene::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
-
-    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
-
+    
     /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
+    
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
+    
+    
 }
