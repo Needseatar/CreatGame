@@ -27,10 +27,10 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(LVRootScene);
     
-    static LVRootScene * myCreate() \
+    static LVRootScene * myCreate()
     {
         LVRootScene *pRet = new(std::nothrow) LVRootScene();
-        if (pRet && pRet->init()) \
+        if (pRet && pRet->init())
         {
             pRet->autorelease();
             return pRet;
